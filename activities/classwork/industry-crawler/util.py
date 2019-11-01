@@ -46,3 +46,19 @@ class StringWrapper(object):
     @property
     def value(self):
         return self._sensitivity_matching(self._value)
+
+    @Decorators.sensitivity_matching_meta_decorator()
+    def contains(self, pattern, reverse = False):
+        return pattern in self.value if not reverse else (self.value in pattern)
+
+    @Decorators.sensitivity_matching_meta_decorator()
+    def similarity_ratio(self, pattern):
+        return SequenceMatcher(None, self.value, pattern).ratio()
+
+    def similar_enough(self, pattern, threshold = None):
+        min_ratio = threshold if threshold is not None else self.default_similarity_threshold
+        return self.similarity_ratio(pattern) > min_ratio
+
+    def boolean_search(self, pattern, exact = False, threshold = None, reverse = False):
+        return self.contains(pattern, reverse = True) if exact else self.similar_enough(pattern, threshold = threshold)
+

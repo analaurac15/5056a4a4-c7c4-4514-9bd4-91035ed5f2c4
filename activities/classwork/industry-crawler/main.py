@@ -17,6 +17,10 @@ class Main(object):
     @staticmethod
     @timeit(logger)
     def download(filename=DEFAULT_INDUSTRY_FILE):
+        logger.info("Starting download procedure...")
+        sic = SIC.from_url(URL)
+        with open(filename, "w") as file:
+            file.write(sic.jsonify())
         pass
 
     @timeit(logger)
