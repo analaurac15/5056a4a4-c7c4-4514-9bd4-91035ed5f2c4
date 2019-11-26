@@ -8,7 +8,7 @@ case object Problem1 extends Problem {
   implicit class StringOps(string: String) {
     def getStr(i: Int): String = scala.util.Try(string.charAt(i).toString).toOption.getOrElse("")
   }
-
+  
   final case class MixedString(first: String, second: String, mixed: String)
 
 
