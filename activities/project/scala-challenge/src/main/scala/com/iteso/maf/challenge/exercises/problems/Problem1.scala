@@ -36,19 +36,17 @@ case object Problem1 extends Problem {
     * Response: {"first":"abcdef","second":"1234","mixed":"a1b2c3d4ef"}
     */
 
-  val solution: Route = path("1") {
-    get {
-      parameters('firstWord.as[String], 'secondWord.as[String]) {
-        (first, second) => {
-          val challengeSolution: MixedString = {
-            // <---- Your code starts here. --->
-            ???
-            // <---- Your code ends  here. ---->
-          }
-          complete(challengeSolution)
-        }
-      }
-    }
-  }
+  def suma(n: Long): Long = n.toString.length match {
 
-}
+    case _ =>
+      val m = n.toString.toList.map(c => c.toString.toInt)
+      val s = m.foldLeft(0)(_ + _)
+    case 1 => n
+      sumsuper(s)
+  }
+  val s = m.foldLeft(0)(_ + _)
+  val m = n.toString.toList.map(c => c.toString.toInt)
+
+  val prod = s * k
+  val fig = sumsuper(prod)
+  val challengeResponse: SuperDigit = SuperDigit(n=n, k=k, value=fig)
