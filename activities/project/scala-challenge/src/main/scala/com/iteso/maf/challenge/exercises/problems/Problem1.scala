@@ -36,17 +36,10 @@ case object Problem1 extends Problem {
     * Response: {"first":"abcdef","second":"1234","mixed":"a1b2c3d4ef"}
     */
 
-  def suma(n: Long): Long = n.toString.length match {
-
-    case _ =>
-      val m = n.toString.toList.map(c => c.toString.toInt)
-      val s = m.foldLeft(0)(_ + _)
-    case 1 => n
-      sumsuper(s)
+  val var1 =  first.zip(second).map(p => p._1.toString + p._2.toString).mkString
+  val comb = (first.length, second.length) match {
+    case (primero, segundo) if primero > segundo =>  var1 + first.substring(segundo, primero)
+    case (tercero, cuarto) if cuarto > tercero => var1 + second.substring(tercero, cuarto)
+    case _ => var1
   }
-  val s = m.foldLeft(0)(_ + _)
-  val m = n.toString.toList.map(c => c.toString.toInt)
-
-  val prod = s * k
-  val fig = sumsuper(prod)
-  val challengeResponse: SuperDigit = SuperDigit(n=n, k=k, value=fig)
+  MixedString(first = first, second = second, mixed = mixed)
